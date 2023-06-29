@@ -1,0 +1,233 @@
+
+
+    <main>
+        <section class="services">
+            <p>My services are available for C++17-, C++20-, C++23-, JavaScript-, and Python projects:</p>
+            <ol>
+                <li>Contact me at my <a href="https://github.com/AbdulShabazz/UnrealEngine" target="_blank">github</a> with the following information:
+                    <ul>
+                        <li>Your name</li>
+                        <li>Your email address (optional)</li>
+                        <li>A description of the task or algorithm for your project (eg. Generate Comprehensive documentation))</li>
+                        <li>A link to your github repository</li>
+                    </ul>
+                </li>
+                </ol>
+                <ol start="2">
+                <li>To submit code for analysis, please provide only 4-5 lines of code with the following information:
+                    <ul>
+                        <li>Your name</li>
+                        <li>Your email address</li>
+                        <li>A description of your algorithm, and</li>
+                        <li>A snapshot of your starting class, struct, or JSON data structure, to use as an example test case.<br> (eg. std::vector&lt;int&gt; v { 1,2,3,4,5 }; )</li>
+                        <li>A snapshot of your final (desired) class, struct, or JSON data structure.<br> (eg. std::vector&lt;int&gt; primes { 2,3,5,7,11 }; )</li>
+                    </ul>
+                </li>
+            </ol>
+            <p>
+                <div>Enter the problematic code with comments below: <br><br></div>
+                <div id="container" class="container">
+                <textarea id="code-snippet" class="code-base transparent-contenteditable" spellcheck="false" contenteditable="true"></textarea>
+                <div id="code-display" class="code-base" spellcheck="false"></div>
+                </div>
+                <div><br><button id="submit" class="" type="submit"> Submit </button></div>
+            </p>
+            <p>Your email and contact information will be redacted prior to posting.</p>
+            <p>By submitting snippets of your code, you agree to the <a href="https://www.cppinsider.com/?file=LICENSE" target="_blank">terms of service</a>.</p>
+            <p>By accepting snippets of code (which may or may not include compiled binaries), you agree to the <a href="https://www.cppinsider.com/?file=LICENSE" target="_blank">terms of service</a>.</p>
+            <p>You can also <a href="mailto:support@cppinsider.com">contact</a> me directly through my email address.</p>
+            <p class="note">
+                Once your request is completed, I will direct you to a URI to further submit test cases against the compiled binary, if you desire, as well as view general details about the source code.
+                If the test cases pass to your liking there will be a referral link to a paypal address to complete the sale. 
+                Afterwards, a link will be provided to download the source code.
+                Copies of binaries can be provided upon request.</p>
+            <p class="billing-rate">My billing rate is $5.88 USD per line of code.</p>
+        </section>
+    </main>
+
+    //
+
+            document.getElementById("code_form").onsubmit = function(e){
+                e.preventDefault();
+                
+                document.getElementById("code_form").innerText = "Thank You!";
+        
+                document.ajax({
+                    type: 'POST',
+                    url: 'https://www.cppinsider.com/?file=FORM',
+                    contentType: 'application/json',
+                    data: JSON.stringify(document.getElementById("code-snippet").innerText),
+                    success: function(res){
+                        console.log(res);
+                    },
+                    error: function(err){
+                        console.log(err);
+                    }
+                });
+            }
+
+//
+
+            document.getElementById("code_form").onsubmit = function(e){
+                e.preventDefault();
+            };
+//
+
+                <form id="code_form">
+                    <input type="text" name="code_content" style="display: none;">
+                    <button id="submit" class="" type="submit"> Submit </button>
+                </form>
+//
+                <div><br>
+                    <button id="submit" type="submit" onclick="do_action({ _url:'https://www.cppinsider.com/?file=SUCCESS', _type::'POST', _content_type:'text/plain' })"> Submit </button>
+//
+		
+            function AJAX_REQUEST(o){
+                fetch(o._url, {
+                  method: o._type, //'POST',
+                  headers: { 'Content-Type': o._content_type }, // { 'Content-Type': 'application/json' },
+                  body: o._data
+                }).then(response => {
+                  if (response.ok) {
+                    return response.text; //response.json();
+                  } else {
+                    throw new Error('Error: ' + response.status);
+                  }
+                }).then(data => {
+                    o._success(data);
+                  console.log(data);
+                }).catch(err => {
+                    o._error(err);
+                  console.log(err);
+                });
+            }
+//
+                <div><br>
+                    <button id="submit" onclick="do_action({ _url:'https://www.cppinsider.com/?file=SUCCESS', _type:'POST', _content_type:'text/plain' })"> Submit </button>
+                </div>
+//
+
+            function do_action(o) {
+                try {
+                    fetch(o._url, {
+                      method: o._type, //'POST',
+                      headers: { 'Content-Type': o._content_type }, // { 'Content-Type': 'application/json' },
+                      body: codeSnippet.innerText
+                    }).then (response => {
+                      if (response.ok) {
+                        return response.text; //response.json();
+                      } else {
+                        throw new Error('return code: ' + response.status);
+                      }
+                    }).then(data => {
+                      submit.innerText = "Thank You!";//console.log(data);
+                    }).catch(err => {
+                      console.log(err);
+                    });
+                } catch (e) {
+                    
+                }
+            }
+//
+let http = require('http');
+let fs = require('fs');
+let path = require('path');
+let url = require('url');
+let server = http.createServer((req, res) => {
+    let contentType = 'text/html';
+    let filePath = path.join(__dirname, 'public', 'index');
+    
+    const parsedUrl = url.parse(req.url, true); // Parse the URL including query parameters
+    const pathName = parsedUrl.pathname; // Get the path
+    const queryObject = parsedUrl.query; // Get the query object
+    const fn = queryObject.file || '';
+    
+    if (fn.match(/LICENSE/g)) {
+        filePath = path.join(__dirname, 'public', 'LICENSE');
+    } else if (fn.match(/SUCCESS/g)) {
+        let body = '';
+        
+        req.on('data', chunk => {
+            body += chunk.toString();
+        });
+
+        req.on('end', () => {
+            filePath = path.join(__dirname, 'public', 'outdex');
+            //const parsedBody = querystring.parse(body);
+            //const username = parsedBody.username;
+            //const password = parsedBody.password;
+            
+            //fs.writeFile(filePath, body, 'utf8', err => {
+            fs.appendFile(filePath, body, 'utf8', err => {
+                if (err) {
+                    res.writeHead(500);
+                    res.end(`Server Error: ${err.code}`);
+                } else {
+                    res.writeHead(200, { 'Content-Type': contentType });
+                    res.end(content, 'utf-8');
+                }
+            });
+        });
+            
+        return;
+    }
+    
+    fs.readFile(filePath, (err, content) => {
+        if (err) {
+            res.writeHead(500);
+            res.end(`Server Error: ${err.code}`);
+        } else {
+            res.writeHead(200, { 'Content-Type': contentType });
+            res.end(content, 'utf-8');
+        }
+    });
+});
+server.listen();
+
+//
+let http = require('http');
+let fs = require('fs');
+let path = require('path');
+let url = require('url');
+let server = http.createServer((req, res) => {
+    let contentType = 'text/html';
+    let filePath = path.join(__dirname, 'public', 'index');
+    
+    const parsedUrl = url.parse(req.url, true); 
+    const pathName = parsedUrl.pathname;
+    const queryObject = parsedUrl.query; 
+    const fn = queryObject.file || '';
+    
+    if (fn.match(/LICENSE/g)) {
+        filePath = path.join(__dirname, 'public', 'LICENSE');
+    } else if (fn.match(/SUCCESS/g)) {
+        let body = '';
+        req.on('data', chunk => {
+            body += chunk.toString();
+        });
+        req.on('end', () => {
+            filePath = path.join(__dirname, 'public', 'outdex');
+            fs.appendFile(filePath, body, 'utf8', err => {
+                if (err) {
+                    res.writeHead(500);
+                    res.end(`Server Error: ${err.code}`);
+                } else {
+                    res.writeHead(200, { 'Content-Type': 'text/plain' });
+                    res.end('SUCCESS', 'utf-8');
+                }
+            });
+        });
+        return;
+    }
+    
+    fs.readFile(filePath, (err, content) => {
+        if (err) {
+            res.writeHead(500);
+            res.end(`Server Error: ${err.code}`);
+        } else {
+            res.writeHead(200, { 'Content-Type': contentType });
+            res.end(content, 'utf-8');
+        }
+    });
+});
+server.listen();

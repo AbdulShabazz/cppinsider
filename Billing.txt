@@ -1,0 +1,14 @@
+Billing Policy:
+
+My billing rate is a set rate per written line of functional code. Please note the following specifics regarding what is considered a billable line of code:
+
+    Functional Code: Lines of code which validate, clarify or are part of the actual functionality of the software are considered billable line of code. 
+    
+    These include logic, declarations, statements, and function calls that contribute to the intended features and behavior of the application.
+
+    Exclusions: The following are not considered in the billing:
+        Comments: Any line of code that is a comment (e.g., starts with // in JavaScript or # in Python) which does not pertain to a feature or behavior and does not contribute towards the intended or desired functionality is not billable.
+        Boilerplate Code: Standard code that is used to set up the structure of the application and doesn't pertain to a feature or behavior and does not contribute towards the intended or desired functionality is not billable.
+        Whitespace: Empty lines or lines containing only whitespace which do not contribute towards the code's readability are not considered billable.
+
+    Code Review: For transparency, I am happy to review the code with you to break down which lines are considered billable according to the aforementioned criteria.

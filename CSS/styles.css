@@ -1,0 +1,86 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    background-color: lab;
+}
+
+header {
+    color: white;
+    text-align: center;
+    padding: 1em;
+}
+
+header h1 {
+    background-color: darkslategray;
+    font-family: 'Arial', sans-serif;
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+}
+
+header p {
+    background-color: lightslategray;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.2em;
+    margin-top: 0;
+}
+
+main {
+    padding: 2em;
+}
+
+/* Buttons */
+button {
+    font-family: 'Arial', sans-serif;
+    font-size: 1em;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+}
+
+section.services {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+section.services ul {
+    list-style: disc;
+    margin-left: 2em;
+}
+
+section.services ol {
+    list-style: decimal;
+    margin-left: 1em;
+}
+
+textarea {
+    width: 100%;
+    margin-top: 1em;
+}
+
+.note {
+    font-size: 0.9em;
+    color: #333;
+    margin-top: 1em;
+}
+
+.billing-rate {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #d43f00;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1em;
+}
+
+div {
+    outline: none;
+}

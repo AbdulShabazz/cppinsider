@@ -1,0 +1,431 @@
+
+//
+If you want to track a struct that is defined in a different file, you can use the `#include <filename>` directive or the `import [module.name]` to include the file or module name in your workspace.
+//
+
+let Enable32BitAlign = vscode.commands.registerCommand('extension.Enable32BitAlignment', function () {
+    // Your logic here to show the memory layout.
+
+    // Display a message box to the user
+    vscode.window.showInformationMessage('StructInspector is now using 32-bit memory algnment!');
+});
+
+// Add the command to the list of disposables which are disposed when this extension is deactivated.
+context.subscriptions.push(Enable32BitAlign);
+
+let Enable64BitAlign = vscode.commands.registerCommand('extension.Enable64BitAlignment', function () {
+    // Your logic here to show the memory layout.
+
+    // Display a message box to the user
+    vscode.window.showInformationMessage('StructInspector is now using 64-bit memory algnment!');
+});
+
+// Add the command to the list of disposables which are disposed when this extension is deactivated.
+context.subscriptions.push(Enable64BitAlign);
+
+//
+
+let Enable16BitAlign = vscode.commands.registerCommand('extension.Enable16BitAlignment', function () {
+    // Your logic here to show the memory layout.
+
+    // Display a message box to the user
+    vscode.window.showInformationMessage('StructInspector is now using 16-bit memory algnment!');
+});
+
+// Add the command to the list of disposables which are disposed when this extension is deactivated.
+context.subscriptions.push(Enable16BitAlign);
+
+//
+{
+    "command": "extension.Enable16BitAlignment",
+    "title": "StructInspector: Enable 16-Bit memory alignment"
+},
+
+//
+,
+	"dependencies": {
+		"vscode-languageserver": "^8.1.0"
+	}
+//
+	"activationEvents": [
+		"onLanguage:c",
+		"onLanguage:cpp",
+		"onLanguage:javascript",
+		"onLanguage:python",
+		"onLanguage:rust",
+		"onLanguage:typescript"
+	],
+//
+
+let UpdateMemoryAlignmentSettings = vscode.commands.registerCommand('extension.showMemoryLayout', function () {
+    // Your logic here to show the memory layout.
+});
+
+// Add the command to the list of disposables which are disposed when this extension is deactivated.
+context.subscriptions.push(UpdateMemoryAlignmentSettings);	
+
+//
+
+const vscode = require('vscode');
+
+function activate(context) {
+    if(vscode.window.activeTextEditor) {
+        handleActiveEditor(vscode.window.activeTextEditor.document);
+    }
+
+    vscode.window.onDidChangeActiveTextEditor(editor => {
+        if(editor) {
+            handleActiveEditor(editor.document);
+        }
+    }, null, context.subscriptions);
+
+    vscode.workspace.onDidOpenTextDocument(handleActiveEditor, null, context.subscriptions);
+}
+
+function handleActiveEditor(document) {
+    if (document.languageId === 'cpp') {
+        console.log('C++ file opened');
+        // Your logic to handle C++ file goes here
+    }
+}
+
+exports.activate = activate;
+
+//
+
+Q:How do I register a uri for onUri?
+ChatGPT:
+
+To handle onUri activation events, you need to define a scheme for your URIs and implement a UriHandler in your extension.
+
+First, define the scheme in the package.json of your extension:
+
+json
+
+"contributes": {
+    "uriHandler": {
+        "protocol": "myprotocol"
+    }
+}
+
+In this example, myprotocol is the scheme you defined. Your extension will handle URIs that start with myprotocol://.
+
+Then, in your extension's entry point file (often extension.js or extension.ts), you need to implement a UriHandler:
+
+javascript
+
+const uriHandler = {
+    handleUri(uri) {
+        // Handle the incoming URI here.
+        console.log(uri.toString());
+    }
+};
+
+vscode.window.registerUriHandler(uriHandler);
+
+In this example, when a URI that starts with myprotocol:// is opened, the handleUri method will be called, and the URI will be printed to the console.
+
+The onUri activation event is triggered when a URI handled by your extension is opened. You need to register the URI scheme in your package.json, and then handle URIs with that scheme in your extension's code.
+
+Please note that VS Code must be the default handler for your custom URI scheme on the user's system. This usually involves operating system-level changes, and it's not something your extension can control. Your users will need to manually set VS Code as the default handler for your custom URI scheme.
+
+For more information, refer to the VS Code extension URI handling documentation.
+
+//
+
+process.arch; 	// possible values: 'arm', 'arm64', 'ia32', 'mips', 'mipsel', 'ppc', 'ppc64', 's390', 's390x', 'x32', and 'x64'
+// 16-bit: ia32, x32
+// 32-bit: arm, mips, mipsel, ppc, s390, x32
+// 64-bit: arm64, ppc64, s390x, x64
+
+//
+
+markdown.appendMarkdown('Memory Map in 1 Byte Blocks:\n \
+<span style="background-color:lightblue; padding: 1px;">This text has a light blue background color.</span>');
+return new vscode.Hover(markdown);
+
+markdown.appendCodeblock('``` ```html\nMemory Map in 1 Byte Blocks:\n<span style="background-color:lightblue; padding: 1px;">This text has a light blue background color.</span>```');
+return new vscode.Hover(markdown);
+
+markdown.appendMarkdown('<span style="color:blue">This text has a light blue background color.</span>');
+return new vscode.Hover(markdown);
+
+markdown.appendMarkdown('## Working with Markdown \n\
+\
+You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts: \n\
+\
+* Split the editor (`Cmd+\\` on macOS or `Ctrl+\\` on Windows and Linux) \n\
+* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux) \n\
+* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets \n\
+\
+## For more information \n\
+\
+* [Visual Studio Code\'s Markdown Support](http://code.visualstudio.com/docs/languages/markdown) \n\
+* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/) \n\
+\
+**Enjoy!**');
+
+markdown.appendMarkdown('Memory Map in 1 Byte Blocks:```html<svg width="10" height="10" xmlns="http://www.w3.org/2000/svg"> \
+<rect x="1" y="1" width="8" height="8" fill="transparent" stroke="black" stroke-width="1" /> </svg>```');
+
+markdown.appendMarkdown('Memory Map in 1 Byte Blocks:```cpp \n\
+<svg width="10" height="10" xmlns="http://www.w3.org/2000/svg"> \n\
+<rect x="1" y="1" width="8" height="8" fill="transparent" stroke="black" stroke-width="1" /> \n\
+</svg>```');
+
+const { TextDocuments, createConnection, ProposedFeatures } = require('vscode-languageserver');
+
+// Create a connection for the server, using Node's IPC as a transport.
+let connection = createConnection(ProposedFeatures.all);
+
+// Create a simple text document manager.
+let documents = new TextDocuments();
+
+documents.onDidOpen((event) => {
+    connection.console.log(`[Server (node)] Document opened: ${event.document.uri}`);
+});
+
+documents.onDidChangeContent((event) => {
+    connection.console.log(`[Server (node)] Document content changed: ${event.document.uri}`);
+});
+
+documents.onDidClose((event) => {
+    connection.console.log(`[Server (node)] Document closed: ${event.document.uri}`);
+});
+
+// Make the text document manager listen on the connection
+// for open, change and close text document events
+documents.listen(connection);
+
+connection.onInitialize((params) => {
+	params;
+    return {
+        capabilities: {
+            textDocumentSync: documents.syncKind
+        }
+    };
+});
+
+// Listen on the connection
+connection.listen();
+
+//
+
+markdown.appendCodeblock('Memory Map in 1 Byte x 8 Byte Blocks:  ', language);
+markdown.appendCodeblock('Rating: Excellent  ', language);
+markdown.appendCodeblock('+-----------------------------------------+  ', language);
+markdown.appendCodeblock('|                  stack                  |  ', language);
+markdown.appendCodeblock('|char(1) + short(2) + int(4) + unused(1); |  ', language);
+markdown.appendCodeblock('|double(8) + unused(0);                   |  ', language);
+markdown.appendCodeblock('+-----------------------------------------+  ', language);
+
+`
+//Q:How can I clarify this memory map layout diagram of a struct declared in C++?
+Memory Layout (in bytes):
+Rating: Excellent
++-----------------------------------------+
+|                  stack                  |
+|char(1) + short(2) + int(4) + unused(1); |
+|double(8) + unused(0);                   |
++-----------------------------------------+
+`
+
+Memory Layout (in bytes):
+
+0       1       2       3       4       5       6       7       8
+|-------|-------|-------|-------|-------|-------|-------|-------|
+|   c   |   s   |   s   |   i   |   i   |   i   |   i   |unused |
+|-------|-------|-------|-------|-------|-------|-------|-------|
+|   d   |   d   |   d   |   d   |   d   |   d   |   d   |   d   |
+|-------|-------|-------|-------|-------|-------|-------|-------|
+
+c - char (1 byte)
+s - short (2 bytes)
+i - int (4 bytes)
+d - double (8 bytes)
+unused - padding (1 byte)
+
+
+Memory Layout (in bytes):
+Rating: Excellent
+0       1       2       3       4       5       6       7         8
+|-------|-------|-------|-------|-------|-------|-------|---------|
+|char(1)|    short(2)   |            int(4)             |unused(1)|
+|-------|-------|-------|-------|-------|-------|-------|---------|
+|                            double(8)							  |
+|-------|-------|-------|-------|-------|-------|-------|---------|
+
+c - char (1 byte)
+s - short (2 bytes)
+i - int (4 bytes)
+d - double (8 bytes)
+unused - padding (1 byte)
+
+StructInspector is a visual studio code extension that strives to promote the "compilation equals verification" paradigm.
+
+//
+
+const { TextDocuments, createConnection, ProposedFeatures } = require('vscode-languageserver');
+
+// Create a connection for the server, using Node's IPC as a transport.
+let connection = createConnection(ProposedFeatures.all);
+
+// Create a simple text document manager.
+let documents = new TextDocuments();
+
+documents.onDidOpen((event) => {
+    connection.console.log(`[Server (node)] Document opened: ${event.document.uri}`);
+});
+
+documents.onDidChangeContent((event) => {
+    connection.console.log(`[Server (node)] Document content changed: ${event.document.uri}`);
+});
+
+documents.onDidClose((event) => {
+    connection.console.log(`[Server (node)] Document closed: ${event.document.uri}`);
+});
+
+// Make the text document manager listen on the connection
+// for open, change and close text document events
+documents.listen(connection);
+
+connection.onInitialize((params) => {
+	params;
+    return {
+        capabilities: {
+            textDocumentSync: documents.syncKind
+        }
+    };
+});
+
+// Listen on the connection
+connection.listen();
+
+//
+
+let FirstViewFlag = true;
+
+// Set the flag to false so that the memory layout is only displayed once
+FirstViewFlag = false;
+
+//
+
+// Add the memory layout to the markdown string
+if (FirstViewFlag) {
+    markdown.appendCodeblock('Memory Layout (in bytes):', language);
+    markdown.appendCodeblock('Rating: Excellent', language);
+    markdown.appendCodeblock('0       1       2       3       4       5       6       7         8', language);
+    markdown.appendCodeblock('|-------|-------|-------|-------|-------|-------|-------|---------|', language);
+    markdown.appendCodeblock('|char(1)|    short(2)   |            int(4)             |unused(1)|', language);
+    markdown.appendCodeblock('|-------|-------|-------|-------|-------|-------|-------|---------|', language);
+    markdown.appendCodeblock('|                            double(8)                            |', language);
+    markdown.appendCodeblock('|-------|-------|-------|-------|-------|-------|-------|---------|', language);
+    markdown.appendCodeblock('\n', language);
+    markdown.appendCodeblock('c - char (1 byte)', language);
+    markdown.appendCodeblock('s - short (2 bytes)', language);
+    markdown.appendCodeblock('i - int (4 bytes)', language);
+    markdown.appendCodeblock('d - double (8 bytes)', language);
+    markdown.appendCodeblock('unused - padding (1 byte)', language);
+}
+
+//
+
+let http = require('http');
+let fs = require('fs');
+let path = require('path');
+let url = require('url');
+let server = http.createServer((req, res) => {
+    let contentType = 'text/html'; // text/plain; // application/json; // application/javascript; // application/css;
+    let filePath = path.join(__dirname, 'public', 'index.html');
+    
+    const parsedUrl = url.parse(req.url, true); // Parse the URL including query parameters
+    const pathName = parsedUrl.pathname; // Get the path
+    const queryObject = parsedUrl.query; // Get the query object
+    const fn = queryObject.file || '';
+    
+    if (fn.match(/LICENSE/g)) {
+        filePath = path.join(__dirname, 'public', 'LICENSE');
+    }
+    
+    fs.readFile(filePath, (err, content) => {
+        if (err) {
+            res.writeHead(500);
+            res.end(`Server Error: ${err.code}`);
+        } else {
+            res.writeHead(200, { 'Content-Type': contentType });
+            res.end(content, 'utf-8');
+        }
+    });
+});
+server.listen();
+
+//
+            <p>By submitting snippets of your code, you agree to the <a href="https://www.cppinsider.com/?file=LICENSE" target="_blank">terms of service</a>.</p>
+            <p>By accepting snippets of code (which may or may not include compiled binaries), you agree to the <a href="https://www.cppinsider.com/?file=LICENSE" target="_blank">terms of service</a>.</p>
+//
+
+let http = require('http');
+let fs = require('fs');
+let path = require('path');
+let url = require('url');
+let server = http.createServer((req, res) => {
+    let contentType = 'text/html';
+    let filePath = path.join(__dirname, 'public', 'index.html');
+    
+    const parsedUrl = url.parse(req.url, true); // Parse the URL including query parameters
+    const pathName = parsedUrl.pathname; // Get the path
+    const queryObject = parsedUrl.query; // Get the query object
+    const fn = queryObject.file || '';
+    
+    if (fn.match(/LICENSE/g)) {
+        filePath = path.join(__dirname, 'public', 'LICENSE');
+    }
+    
+    fs.readFile(filePath, (err, content) => {
+        if (err) {
+            res.writeHead(500);
+            res.end(`Server Error: ${err.code}`);
+        } else {
+            res.writeHead(200, { 'Content-Type': contentType });
+            res.end(content, 'utf-8');
+        }
+    });
+});
+server.listen();
+
+//
+
+let http = require('http');
+let fs = require('fs');
+let path = require('path');
+let url = require('url');
+let server = http.createServer((req, res) => {
+    let contentType = 'text/html';
+    let filePath = path.join(__dirname, 'public', 'index');
+    
+    //const pathname = url.parse(req.url).pathname;
+    const file = url.parse(req.url).pathname;
+    //const file = pathname.substring(1); // Remove the leading slash
+    
+    if (file.match(/=/)) {
+        filePath = path.join(__dirname, 'public', 'LICENSE');
+    }
+    
+    fs.readFile(filePath, (err, content) => {
+        if (err) {
+            res.writeHead(500);
+            res.end(`Server Error: ${err.code}`);
+        } else {
+            res.writeHead(200, { 'Content-Type': contentType });
+            res.end(content, 'utf-8');
+        }
+    });
+});
+server.listen();
+
+//
+
+
+            <p>By submitting snippets of your code, you agree to the <a href="https://www.cppinsider.com/?file=LICENSE" target="_blank">terms of service</a>.</p>
+            <p>By accepting snippets of code (which may or may not include compiled binaries), you agree to the <a href="https://www.cppinsider.com/?file=LICENSE" target="_blank">terms of service</a>.</p>
+            

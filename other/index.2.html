@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Syntax Highlighting</title>
+	<style>
+		.keyword {
+			color: blue;
+		}
+	</style>
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			const editor = document.querySelector('#editor');
+			let timeoutId;
+
+			editor.addEventListener('input', () => {
+				clearTimeout(timeoutId);
+
+				timeoutId = setTimeout(() => {
+					const text = editor.innerText;
+					const highlighted = text.replace(/\b(function|var|return)\b/g, '<span class="keyword">$1</span>');
+					
+					editor.innerHTML = highlighted;
+					placeCaretAtEnd(editor);
+				}, 300);
+			});
+
+			function placeCaretAtEnd(el) {
+				el.focus();
+				if (typeof window.getSelection != "undefined" && typeof document.createRange != "undefined") {
+					var range = document.createRange();
+					range.selectNodeContents(el);
+					range.collapse(false);
+					var sel = window.getSelection();
+					sel.removeAllRanges();
+					sel.addRange(range);
+				}
+			}
+		});
+	</script>
+</head>
+<body>
+
+	<div id="editor" contenteditable="true" style="border: 1px solid black; padding: 10px;">
+		Type your code here...
+	</div>
+
+</body>
+</html>

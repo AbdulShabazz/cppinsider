@@ -1,0 +1,81 @@
+
+.code-base {
+    font-family: 'Courier New', monospace;
+    font-size: 12pt;
+    background-color: #e8e8e8;
+    border-left: 10px solid #4CAF50;
+    border-top: 1px solid #8e8e8e;
+    border-right: 1px solid #8e8e8e;
+    border-bottom: 1px solid #8e8e8e;
+    color: #333;
+    display: inline-block;
+    width: 740px;
+    padding: 1em;
+    margin: 0;
+    outline: none;
+    z-index: 2;
+    tab-size: 4;
+    min-height: 18px;
+    max-width: 740px;
+    line-height: 1em;
+    overflow: hidden;
+    resize: none;
+    white-space: pre-wrap; /* Make sure text wraps */
+    overflow-wrap: normal; /* Break words to prevent overflow */
+}
+
+/* Transparent; Set the caret color to something visible */
+.transparent-contenteditable {
+    background-color: transparent;
+    /*opacity: 0;*/
+    color: transparent;
+    caret-color: #000;
+    position: absolute;
+    z-index: 1;
+}
+
+.container {
+    z-index: 0;
+}
+
+.digit {
+    color: rgb(0, 149, 255);
+    font-style: italic;
+    /*font-weight: bold;*/
+}
+
+.keyword {
+    color: rgb(3, 71, 120);
+    /*font-weight: bold*/;
+}
+
+.utils {
+    color: rgb(0, 149, 255);
+    font-style: italic;
+}
+
+.scope {
+    color: royalblue;
+}
+
+.comment {
+    color: #8e8e8e;
+}
+
+.line_comment {
+    color: #8e8e8e;
+}
+
+.string {
+    color: rgb(149, 116, 104);
+    font-style: italic;
+}
+
+.space {
+   /* padding-left: 0.6em;*/
+    display: inline-block;
+}
+
+div {
+    display: inline-block;
+}

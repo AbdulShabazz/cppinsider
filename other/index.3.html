@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Span OnKeyUp</title>
+	<style>
+		.keyword {
+			color: blue;
+		}
+
+		.code_snippets {
+			background-color: #f1f1f1;
+			border-left: 10px solid #4CAF50;
+			color: #333;
+			padding: 1em;
+			margin: 0;
+			display: inline-block;
+			width: 100%;
+			outline: none;
+		}
+	</style>
+	<script>
+		function highlighter(el) {
+			
+			const text = el.innerText;
+			const highlighted = text.replace(/\b(function|var|return)\b/g, '<span onkeyup="highlighter(this)">$1</span>');
+			el.innerHTML = highlighted;
+			el.focus();
+		}
+	</script>
+</head>
+<body>
+
+	<div class="code_snippets" contenteditable="true" placeholder="Focus me and press any key">
+	<span onkeyup="highlighter(this)"></span>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,2 @@
+SYMP: Edge renders divs with <br> tags, inline.
+SOLU: delete: highlighter.css: div { display: inline-block; }
