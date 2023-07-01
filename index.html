@@ -225,7 +225,7 @@
             <p>Your email and contact information will be redacted prior to posting.</p>
             <p>By submitting snippets of your code, you agree to the <a href="https://www.cppinsider.com/?file=LICENSE" target="_blank">terms of service</a>.</p>
             <p>By accepting snippets of code (which may or may not include compiled binaries), you agree to the <a href="https://www.cppinsider.com/?file=LICENSE" target="_blank">terms of service</a>.</p>
-            <p>You can also <a href="mailto:support@cppinsider.com">contact</a> me directly through my email address.</p>
+            <p>You can also <a href="mailto:support@cppinsider.com">contact</a> me personally through my email address.</p>
             <p class="note">
                 Once your request is completed, I will direct you to a URI to further submit test cases against the compiled binary, as well as view general details about the source code.
                 If the test cases pass to your liking there will be a referral link to a paypal to complete the sale. 
@@ -358,7 +358,10 @@
                       headers: { 'Content-Type': 'text/plain' },
                       body: _data
                     }).then (response => {
-                        submit.outerHTML = "<div>SUCCESS!</div>";
+                        submit.outerHTML = 
+`<div>Thank you for reaching out and showing interest in our services! <br><br>
+
+Our team is currently reviewing your submission, and we will try to respond within 24-48 business hours. </div>`;
                       if (response.ok) {
                         response.text;
                       } else {
