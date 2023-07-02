@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MSVC Project Settings Form</title>
+		<style>
+			body, input, label {
+				font-family: Arial, Helvetica, sans-serif;
+				font-size: 14px;
+			}
+		</style>
+    </head>
+    <body>
+        <form id="config_form">
+            <h2>MSVC Project Settings</h2>
+
+            <h3>Code Base</h3>
+            <input type="radio" id="MD" name="CLibrary" value="MD">
+            <label for="C14">/C++14</label><br>
+            <input type="radio" id="MT" name="CLibrary" value="MT">
+            <label for="C17">/C++17</label><br>
+            <input type="radio" id="MT" name="CLibrary" value="MT">
+            <label for="C20">/C++20</label><br>
+            <input type="radio" id="MT" name="CLibrary" value="MT">
+            <label for="C23">/C++23</label><br>
+            <input type="radio" id="MT" name="CLibrary" value="MT" checked>
+            <label for="CLA">/C++ (Latest)</label><br>
+            <input type="radio" id="MT" name="CLibrary" value="MT">
+            <label for="CJS" checked>/JavaScript (Latest)</label><br>
+            <input type="radio" id="MT" name="CLibrary" value="MT">
+            <label for="CPY">/Python (Latest)</label><br>
+            <input type="radio" id="MT" name="CLibrary" value="MT">
+            <label for="CDOC">/Library (Generate Documentation)</label><br>
+
+            <h3>Optimization Settings</h3>
+            <input type="radio" id="O1" name="Ox" value="O1" checked>
+            <label for="O1">/Oz (Default)</label><br>
+            <input type="radio" id="O1" name="Ox" value="O1">
+            <label for="O1">/O1 (Minimize Size)</label><br>
+            <input type="radio" id="O2" name="Ox" value="O2">
+            <label for="O2">/O2 (Maximize Speed)</label><br>
+            <input type="radio" id="Ob" name="Ox" value="Ox">
+            <label for="Ob">/Ob (Inline Function Expansion)</label><br>
+
+            <h3>Warning Level Observance</h3>
+            <input type="radio" id="W0" name="Wlevel" value="W0" checked>
+            <label for="W0">/W0 (Ignore and or Turn Off Warnings)</label><br>
+            <input type="radio" id="W1" name="Wlevel" value="W1">
+            <label for="W1">/W1 (Warning Level 1)</label><br>
+            <input type="radio" id="W2" name="Wlevel" value="W2">
+            <label for="W2">/W2 (Warning Level 2)</label><br>
+            <input type="radio" id="W3" name="Wlevel" value="W3">
+            <label for="W3">/W3 (Warning Level 3)</label><br>
+            <input type="radio" id="W4" name="Wlevel" value="W4">
+            <label for="W4">/W4 (Warning Level 4)</label><br>
+
+            <h3>Runtime Library</h3>
+            <input type="radio" id="MD" name="Rlibrary" value="MD" checked>
+            <label for="MD">/ST (Singlethreaded Non-DLL)</label><br>
+            <input type="radio" id="MD" name="Rlibrary" value="MD">
+            <label for="MD">/SD (Singlethreaded DLL)</label><br>
+            <input type="radio" id="MT" name="Rlibrary" value="MT">
+            <label for="MT">/MT (Multithreaded)</label><br>
+            <input type="radio" id="MD" name="Rlibrary" value="MD">
+            <label for="MD">/MD (Multithreaded DLL)</label><br>
+			<div style="margin-top: 12px;"><input id=submit type="submit" value="Submit"></div>
+        </form>
+		<footer>
+			<script>
+				document.getElementById("config_form").onsubmit = function(e) {
+					var radios = document.getElementsByName("CLibrary");
+					for (var i = 0; i < radios.length; i++) {
+						if (radios[i].checked) {
+							var CLibrary = radios[i].value;
+							break;
+						}
+					}
+
+					radios = document.getElementsByName("Ox");
+					for (var i = 0; i < radios.length; i++) {
+						if (radios[i].checked) {
+							var Ox = radios[i].value;
+							break;
+						}
+					}
+
+					radios = document.getElementsByName("Wlevel");
+					for (var i = 0; i < radios.length; i++) {
+						if (radios[i].checked) {
+							var Wlevel = radios[i].value;
+							break;
+						}
+					}
+
+					radios = document.getElementsByName("Rlibrary");
+					for (var i = 0; i < radios.length; i++) {
+						if (radios[i].checked) {
+							var Rlibrary = radios[i].value;
+							break;
+						}
+					}
+
+					try {
+						const data = "CLibrary=" + CLibrary + "; Ox=" + Ox + "; Wlevel=" + Wlevel + "; Rlibrary=" + Rlibrary;
+						fetch("https://www.cppinsider.com/?file=CONFIG&filehandle=", {
+							method: "POST",
+							headers: {
+								"Content-Type": "text/plain"
+							},
+							body: data
+						})
+						.then(function(response) {
+						submit.outerHTML = 
+`<div>Thank you for reaching out to our services! <br><br>
+
+Our team is currently reviewing your submission, and we will try to respond within 24-48 business hours. </div>`;
+							if (response.ok) {
+								return response.text();
+							} else {
+								console.log('Error - return code: ' + response.status);
+							}
+						})
+						.catch(function(error) {
+							console.error(error);
+						});
+					} catch (e) {
+						console.error(e);
+					} // end catch
+				} // end function
+			</script>
+		</footer>
+    </body>
+</html>
