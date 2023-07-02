@@ -14,31 +14,31 @@
             <h2>MSVC Project Settings</h2>
 
             <h3>Code Base</h3>
-            <input type="radio" id="MD" name="CLibrary" value="C14">
+            <input type="radio" id="C14" name="CLibrary" value="C14">
             <label for="C14">/C++14</label><br>
-            <input type="radio" id="MT" name="CLibrary" value="C17">
+            <input type="radio" id="C17" name="CLibrary" value="C17">
             <label for="C17">/C++17</label><br>
-            <input type="radio" id="MT" name="CLibrary" value="C20">
+            <input type="radio" id="C20" name="CLibrary" value="C20">
             <label for="C20">/C++20</label><br>
-            <input type="radio" id="MT" name="CLibrary" value="C23">
+            <input type="radio" id="C23" name="CLibrary" value="C23">
             <label for="C23">/C++23</label><br>
-            <input type="radio" id="MT" name="CLibrary" value="CLA" checked>
+            <input type="radio" id="CLA" name="CLibrary" value="CLA" checked>
             <label for="CLA">/C++ (Latest)</label><br>
-            <input type="radio" id="MT" name="CLibrary" value="CJS">
+            <input type="radio" id="CJS" name="CLibrary" value="CJS">
             <label for="CJS">/JavaScript (Latest)</label><br>
-            <input type="radio" id="MT" name="CLibrary" value="CPY">
+            <input type="radio" id="CPY" name="CLibrary" value="CPY">
             <label for="CPY">/Python (Latest)</label><br>
-            <input type="radio" id="MT" name="CLibrary" value="CDOC">
+            <input type="radio" id="CDOC" name="CLibrary" value="CDOC">
             <label for="CDOC">/Library (Generate Documentation)</label><br>
 
             <h3>Optimization Settings</h3>
-            <input type="radio" id="O1" name="Ox" value="Od" checked>
+            <input type="radio" id="Od" name="OSettings" value="Od" checked>
             <label for="Od">/Oz (Default)</label><br>
-            <input type="radio" id="O1" name="Ox" value="O1">
+            <input type="radio" id="O1" name="OSettings" value="O1">
             <label for="O1">/O1 (Minimize Size)</label><br>
-            <input type="radio" id="O2" name="Ox" value="O2">
+            <input type="radio" id="O2" name="OSettings" value="O2">
             <label for="O2">/O2 (Maximize Speed)</label><br>
-            <input type="radio" id="Ob" name="Ox" value="Ox">
+            <input type="radio" id="Ob" name="OSettings" value="Ox">
             <label for="Ob">/Ob (Inline Function Expansion)</label><br>
 
             <h3>Warning Level Observance</h3>
@@ -75,7 +75,7 @@
 						}
 					}
 
-					radios = document.getElementsByName("Ox");
+					radios = document.getElementsByName("OSettings");
 					for (var i = 0; i < radios.length; i++) {
 						if (radios[i].checked) {
 							var Ox = radios[i].value;
