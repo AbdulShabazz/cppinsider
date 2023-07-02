@@ -1,5 +1,0 @@
-
-TODO:
-
-- [ ] keywords: C++ Programming Help; C++17, C++20, C++23 Projects Help; Documentation Generation; 
-- [ ] strip cleartext files from the server daily or weekly
