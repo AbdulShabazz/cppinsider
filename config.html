@@ -14,26 +14,26 @@
             <h2>MSVC Project Settings</h2>
 
             <h3>Code Base</h3>
-            <input type="radio" id="MD" name="CLibrary" value="MD">
+            <input type="radio" id="MD" name="CLibrary" value="C14">
             <label for="C14">/C++14</label><br>
-            <input type="radio" id="MT" name="CLibrary" value="MT">
+            <input type="radio" id="MT" name="CLibrary" value="C17">
             <label for="C17">/C++17</label><br>
-            <input type="radio" id="MT" name="CLibrary" value="MT">
+            <input type="radio" id="MT" name="CLibrary" value="C20">
             <label for="C20">/C++20</label><br>
-            <input type="radio" id="MT" name="CLibrary" value="MT">
+            <input type="radio" id="MT" name="CLibrary" value="C23">
             <label for="C23">/C++23</label><br>
-            <input type="radio" id="MT" name="CLibrary" value="MT" checked>
+            <input type="radio" id="MT" name="CLibrary" value="CLA" checked>
             <label for="CLA">/C++ (Latest)</label><br>
-            <input type="radio" id="MT" name="CLibrary" value="MT">
+            <input type="radio" id="MT" name="CLibrary" value="CJS">
             <label for="CJS">/JavaScript (Latest)</label><br>
-            <input type="radio" id="MT" name="CLibrary" value="MT">
+            <input type="radio" id="MT" name="CLibrary" value="CPY">
             <label for="CPY">/Python (Latest)</label><br>
-            <input type="radio" id="MT" name="CLibrary" value="MT">
+            <input type="radio" id="MT" name="CLibrary" value="CDOC">
             <label for="CDOC">/Library (Generate Documentation)</label><br>
 
             <h3>Optimization Settings</h3>
-            <input type="radio" id="O1" name="Ox" value="O1" checked>
-            <label for="O1">/Oz (Default)</label><br>
+            <input type="radio" id="O1" name="Ox" value="Od" checked>
+            <label for="Od">/Oz (Default)</label><br>
             <input type="radio" id="O1" name="Ox" value="O1">
             <label for="O1">/O1 (Minimize Size)</label><br>
             <input type="radio" id="O2" name="Ox" value="O2">
@@ -54,10 +54,10 @@
             <label for="W4">/W4 (Warning Level 4)</label><br>
 
             <h3>Runtime Library</h3>
-            <input type="radio" id="MD" name="Rlibrary" value="MD" checked>
-            <label for="MD">/ST (Singlethreaded Non-DLL)</label><br>
-            <input type="radio" id="MD" name="Rlibrary" value="MD">
-            <label for="MD">/SD (Singlethreaded DLL)</label><br>
+            <input type="radio" id="ST" name="Rlibrary" value="ST" checked>
+            <label for="ST">/ST (Singlethreaded Non-DLL)</label><br>
+            <input type="radio" id="SD" name="Rlibrary" value="SD">
+            <label for="SD">/SD (Singlethreaded DLL)</label><br>
             <input type="radio" id="MT" name="Rlibrary" value="MT">
             <label for="MT">/MT (Multithreaded)</label><br>
             <input type="radio" id="MD" name="Rlibrary" value="MD">
