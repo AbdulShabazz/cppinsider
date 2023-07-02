@@ -7,7 +7,59 @@
 		body {
 			font-family: Arial, Helvetica, sans-serif;
 			font-size: 14px;
+			line-height: 1.6;
+			background-color: gainsboro;
 			/*color:darkslategray;*/
+		}
+
+		header {
+			color: white;
+			text-align: center;
+			padding: 1em;
+		}
+
+		header h1 {
+			background-color: darkslategray;
+			font-family: 'Arial', sans-serif;
+			font-size: 2.5em;
+			margin-bottom: 0.5em;
+		}
+
+		header p {
+			background-color: lightslategray;
+			font-family: 'Open Sans', sans-serif;
+			font-size: 1.2em;
+			margin-top: 0;
+		}
+
+		main {
+			padding: 2em;
+		}
+
+		/* Buttons */
+		button {
+			font-family: 'Arial', sans-serif;
+			font-size: 1em;
+			padding: 10px 20px;
+			cursor: pointer;
+			border: none;
+			background-color: #4CAF50;
+			color: white;
+		}
+
+		section.services {
+			max-width: 800px;
+			margin: 0 auto;
+		}
+
+		section.services ul {
+			list-style: disc;
+			margin-left: 2em;
+		}
+
+		section.services ol {
+			list-style: decimal;
+			margin-left: 1em;
 		}
 		
 		div {
@@ -37,97 +89,112 @@
 	</style>
 </head>
 <body onload="init()">
-    <h2>File Details</h2>
-    <div>
-        <label for="fileHandle">File Handle:</label>
-        <select id="fileHandle" onchange="updateFileDetails(this.value)">
-            <option value="" default>-- Select --</option>
-            <option value="01-06-2023-1125">01-06-2023-1125</option>
-            <!-- Populate the options dynamically -->
-        </select>
+    <center>
+    <div style="width:850px;">
+    <header>
+        <center>
+        <h1>C++ Insider</h1>
+        <p>If you have a difficult algorithm or segment of code to tackle.</p>
+        </center>
+    </header>
     </div>
-    <div>
-        <label for="fileName">Filename:</label>
-        <input type="text" id="fileName" class="inactive" readonly>
-    </div>
-    <div>
-        <label for="remarks">Remarks:</label>
-        <input type="text" id="remarks" class="inactive" readonly>
-    </div>
-    <div>
-        <label for="totalLength">Total Length (lines):</label>
-        <input type="text" id="totalLength" class="inactive" readonly>
-    </div>
-    <div>
-        <label for="totalDocs">Total Documentation (words):</label>
-        <input type="text" id="totalDocs" class="inactive" readonly>
-    </div>
+    </center>
 
-    <div>
-        <label for="testCase" style="vertical-align: top;">Test Case(s):</label>
-        <textarea id="testCase" class="flex-grow" oninput="resizeTextarea(this)" placeholder="(eg. 1, 2, 3, 4)" spellcheck="false"></textarea>
-        <div style="display: inline;vertical-align: top;">
-			<button onclick="test()"> Test </button>
-			<button onclick="clear()"> Clear </button>
-		</div>
-    </div>
-    <div>
-        <label for="output" style="vertical-align: top;">Output:</label>
-        <textarea id="output" class="flex-grow" oninput="resizeTextarea(this)" placeholder="(eg. 2, 3, 5, 7)" spellcheck="false"></textarea>
-    </div>
-	<footer>
-		<script>
-			// Object holding the details of each file
-			var fileDetails = {
-				"01-06-2023-1125": {
-					fileName: "File1.cpp",
-					remarks: "Enter any remarks here which will be displayed in the text box\nThis is a multiline text box\nThis content is just a placeholder, replace with actual implementation",
-					totalLength: "100",
-					totalDocs: "200"
-				},
-				// Add more file details here...
-			}
-			
-			// Function to update file details when selection changes
-			function updateFileDetails(fileHandle) {
-				var details = fileDetails[fileHandle];
-				if (details) {
-					document.getElementById('fileName').value = details.fileName;
-					document.getElementById('remarks').value = details.remarks;
-					document.getElementById('totalLength').value = details.totalLength;
-					document.getElementById('totalDocs').value = details.totalDocs;
-				} else {
-					document.getElementById('fileName').value = 'n/a';
-					document.getElementById('remarks').value = 'n/a';
-					document.getElementById('totalLength').value = 'n/a';
-					document.getElementById('totalDocs').value = 'n/a';
-				}
-			}
-			
-			// Function to perform test on test case
-			function test() {
-				var testCase = document.getElementById('testCase').value;
-				// Perform test and update output (This is just a placeholder, replace with actual implementation)
-				document.getElementById('output').value = "Test result for case: " + testCase;
-			}
-			
-			// Function to perform test on test case
-			function clear() {
-				document.getElementById('testCase').innerText = 
-				document.getElementById('output').innerText = '';
-			}
+    <main>
+        <section class="services">
+			<h2>File Details</h2>
+			<div>
+				<label for="fileHandle">File Handle:</label>
+				<select id="fileHandle" onchange="updateFileDetails(this.value)">
+					<option value="" default>-- Select --</option>
+					<option value="01-06-2023-1125">01-06-2023-1125</option>
+					<!-- Populate the options dynamically -->
+				</select>
+			</div>
+			<div>
+				<label for="fileName">Filename:</label>
+				<input type="text" id="fileName" class="inactive" readonly>
+			</div>
+			<div>
+				<label for="remarks">Remarks:</label>
+				<input type="text" id="remarks" class="inactive" readonly>
+			</div>
+			<div>
+				<label for="totalLength">Total Length (lines):</label>
+				<input type="text" id="totalLength" class="inactive" readonly>
+			</div>
+			<div>
+				<label for="totalDocs">Total Documentation (words):</label>
+				<input type="text" id="totalDocs" class="inactive" readonly>
+			</div>
 
-			function resizeTextarea(elem) {
-				elem.style.height = "auto"; // Temporarily shrink textarea to minimum size
-				elem.style.height = (elem.scrollHeight) + "px"; // Increase height to match content
-			}
-		
-			function init() {
-				// Set default content
-				resizeTextarea(document.getElementById('output'));
-				resizeTextarea(document.getElementById('testCase'));
-			}
-		</script>
-	</footer>
+			<div>
+				<label for="testCase" style="vertical-align: top;">Test Case(s):</label>
+				<textarea id="testCase" class="flex-grow" oninput="resizeTextarea(this)" placeholder="(eg. 1, 2, 3, 4)" spellcheck="false"></textarea>
+				<div style="display: inline;vertical-align: top;">
+					<button onclick="test()"> Test </button>
+					<button onclick="clear()"> Clear </button>
+				</div>
+			</div>
+			<div>
+				<label for="output" style="vertical-align: top;">Output:</label>
+				<textarea id="output" class="flex-grow" oninput="resizeTextarea(this)" placeholder="(eg. 2, 3, 5, 7)" spellcheck="false"></textarea>
+			</div>
+			<footer>
+				<script>
+					// Object holding the details of each file
+					var fileDetails = {
+						"01-06-2023-1125": {
+							fileName: "File1.cpp",
+							remarks: "Enter any remarks here which will be displayed in the text box\nThis is a multiline text box\nThis content is just a placeholder, replace with actual implementation",
+							totalLength: "100",
+							totalDocs: "200"
+						},
+						// Add more file details here...
+					}
+					
+					// Function to update file details when selection changes
+					function updateFileDetails(fileHandle) {
+						var details = fileDetails[fileHandle];
+						if (details) {
+							document.getElementById('fileName').value = details.fileName;
+							document.getElementById('remarks').value = details.remarks;
+							document.getElementById('totalLength').value = details.totalLength;
+							document.getElementById('totalDocs').value = details.totalDocs;
+						} else {
+							document.getElementById('fileName').value = 'n/a';
+							document.getElementById('remarks').value = 'n/a';
+							document.getElementById('totalLength').value = 'n/a';
+							document.getElementById('totalDocs').value = 'n/a';
+						}
+					}
+					
+					// Function to perform test on test case
+					function test() {
+						var testCase = document.getElementById('testCase').value;
+						// Perform test and update output (This is just a placeholder, replace with actual implementation)
+						document.getElementById('output').value = "Test result for case: " + testCase;
+					}
+					
+					// Function to perform test on test case
+					function clear() {
+						document.getElementById('testCase').innerText = 
+						document.getElementById('output').innerText = '';
+					}
+
+					function resizeTextarea(elem) {
+						elem.style.height = "auto"; // Temporarily shrink textarea to minimum size
+						elem.style.height = (elem.scrollHeight) + "px"; // Increase height to match content
+					}
+				
+					function init() {
+						// Set default content
+						resizeTextarea(document.getElementById('output'));
+						resizeTextarea(document.getElementById('testCase'));
+					}
+				</script>
+			</footer>
+		</section>
+	</main>
 </body>
 </html>
