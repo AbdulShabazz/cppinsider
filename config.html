@@ -72,7 +72,7 @@
 		<header>
 			<center>
 			<h1>C++ Insider</h1>
-			<p>If you have a difficult algorithm or segment of code to tackle.</p>
+			<p>Additional settings required.</p>
 			</center>
 		</header>
 		</div>
@@ -84,21 +84,43 @@
 
 				<h3>Code Base</h3>
 				<input type="radio" id="C14" name="CLibrary" value="C14">
-				<label for="C14">/C++14</label><br>
+				<label for="C14">/std:C++14</label><br>
 				<input type="radio" id="C17" name="CLibrary" value="C17">
-				<label for="C17">/C++17</label><br>
+				<label for="C17">/std:C++17</label><br>
 				<input type="radio" id="C20" name="CLibrary" value="C20">
-				<label for="C20">/C++20</label><br>
+				<label for="C20">/std:C++20</label><br>
 				<input type="radio" id="C23" name="CLibrary" value="C23">
-				<label for="C23">/C++23</label><br>
+				<label for="C23">/std:C++23</label><br>
 				<input type="radio" id="CLA" name="CLibrary" value="CLA" checked>
-				<label for="CLA">/C++ (Latest)</label><br>
+				<label for="CLA">/std:C++ (Latest)</label><br>
 				<input type="radio" id="CJS" name="CLibrary" value="CJS">
 				<label for="CJS">/JavaScript (Latest)</label><br>
 				<input type="radio" id="CPY" name="CLibrary" value="CPY">
 				<label for="CPY">/Python (Latest)</label><br>
 				<input type="radio" id="CDOC" name="CLibrary" value="CDOC">
 				<label for="CDOC">/Library (Generate Documentation)</label><br>
+
+				<h3>Calling Convention</h3>
+				<input type="radio" id="Gd" name="CConvention" value="Gd" checked>
+				<label for="Gd">/Gd (__cdecl)</label><br>
+				<input type="radio" id="Gr" name="CConvention" value="Gr">
+				<label for="Gr">/Gr (__fastcall)</label><br>
+				<input type="radio" id="Gz" name="CConvention" value="Gz">
+				<label for="Gz">/Gz (__stdcall)</label><br>
+				<input type="radio" id="Gv" name="CConvention" value="Gv">
+				<label for="Gv">/Gv (__vectorcall)</label><br>
+
+				<h3>OpenMP Support</h3>
+				<input type="radio" id="openmp_" name="OMPSupport" value="openmp_" checked>
+				<label for="openmp_">/openmp- (No)</label><br>
+				<input type="radio" id="openmp" name="OMPSupport" value="openmp">
+				<label for="openmp">/openmp (Yes)</label><br>
+
+				<h3>Treat Warnings as Errors</h3>
+				<input type="radio" id="WX_" name="WarnAsErr" value="WX_" checked>
+				<label for="WX_">/WX- (No - This setting will (-) reduce turnaround time)</label><br>
+				<input type="radio" id="WX" name="WarnAsErr" value="WX">
+				<label for="WX">/WX</label><br>
 
 				<h3>Optimization Settings</h3>
 				<input type="radio" id="Od" name="OSettings" value="Od" checked>
@@ -112,7 +134,7 @@
 
 				<h3>Warning Level Observance</h3>
 				<input type="radio" id="W0" name="Wlevel" value="W0" checked>
-				<label for="W0">/W0 (Ignore and or Turn Off Warnings)</label><br>
+				<label for="W0">/W0 (Ignore and or Turn Off Warnings - This setting will (-) reduce turnaround time)</label><br>
 				<input type="radio" id="W1" name="Wlevel" value="W1">
 				<label for="W1">/W1 (Warning Level 1)</label><br>
 				<input type="radio" id="W2" name="Wlevel" value="W2">
@@ -131,6 +153,47 @@
 				<label for="MT">/MT (Multithreaded)</label><br>
 				<input type="radio" id="MD" name="Rlibrary" value="MD">
 				<label for="MD">/MD (Multithreaded DLL)</label><br>
+
+				<h3>Target Build Tool Architecture</h3>
+				<input type="radio" id="x64" name="BuildArch" value="x64" checked>
+				<label for="x64">/x64 (64-bit)</label><br>
+				<input type="radio" id="x32" name="BuildArch" value="x32">
+				<label for="x64">/x32 (32-bit)</label><br>
+
+				<h3>Microsoft Foundation Class (MFC) Support</h3>
+				<input type="radio" id="SWL" name="UseMFC" value="SWL" checked>
+				<label for="SWL">/STD (Use Standard Windows Libraries)</label><br>
+				<input type="radio" id="SWL" name="UseMFC" value="MFCS">
+				<label for="MFCS">/MFCS (Use MFC in a Static Library)</label><br>
+				<input type="radio" id="SWL" name="UseMFC" value="MFC">
+				<label for="MFC">/MFC (Use MFC in a Shared DLL)</label><br>
+
+				<h3>Character Set</h3>
+				<input type="radio" id="utf8" name="CharSet" value="utf8" checked>
+				<label for="utf8">/UTF8 (Use Unicode Character Set)</label><br>
+				<input type="radio" id="utf8" name="CharSet" value="utf16">
+				<label for="utf16">/UTF16 (Use Multi-byte Character Set)</label><br>
+
+				<h3>Whole Program Optimization Settings</h3>
+				<input type="radio" id="LTO" name="WPO" value="LTO" checked>
+				<label for="LTO">/LTO (Use Link Time Code Generation)</label><br>
+				<input type="radio" id="PGI" name="WPO" value="PGI">
+				<label for="PGI">/PGI (Use Profile Guided Optimization - Instrument)</label><br>
+				<input type="radio" id="PGO" name="WPO" value="PGO">
+				<label for="PGO">/PGO (Use Profile Guided Optimization - Optimize)</label><br>
+				<input type="radio" id="PGU" name="WPO" value="PGU">
+				<label for="PGU">/PGU (Use Profile Guided Optimization - Update)</label><br>
+
+				<h3>Basic Runtime Checks</h3>
+				<input type="radio" id="RTCx" name="BRT" value="RTCx" checked>
+				<label for="RTCx">/RTCx (Default)</label><br>
+				<input type="radio" id="RTCs" name="BRT" value="RTCs">
+				<label for="RTCs">/RTCs (Stack Frames)</label><br>
+				<input type="radio" id="RTCu" name="BRT" value="RTCu">
+				<label for="RTCu">/RTCu (Unitialized Variables)</label><br>
+				<input type="radio" id="RTC1" name="BRT" value="RTC1">
+				<label for="RTC1">/RTC1 (Both /RTCu /RTCs)</label><br>
+
 				<div style="margin-top: 12px;">
 					<button id=submit type="submit" value="Submit"> Submit </button>
 				</div>
@@ -138,40 +201,36 @@
 			<footer>
 				<script>
 					document.getElementById("config_form").onsubmit = function(e) {
-						var radios = document.getElementsByName("CLibrary");
-						for (var i = 0; i < radios.length; i++) {
-							if (radios[i].checked) {
-								var CLibrary = radios[i].value;
-								break;
-							}
-						}
+						let config_settings = [];
+						const global_settings = 
+						[ "CLibrary"
+						, "CConvention"
+						, "OMPSupport"
+						, "WarnAsErr"
+						, "OSettings"
+						, "Wlevel"
+						, "Rlibrary"
+						, "BuildArch"
+						, "UseMFC"
+						, "CharSet"
+						, "WPO"
+						, "BRT"
+						];
 
-						radios = document.getElementsByName("OSettings");
-						for (var i = 0; i < radios.length; i++) {
-							if (radios[i].checked) {
-								var Ox = radios[i].value;
-								break;
-							}
-						}
-
-						radios = document.getElementsByName("Wlevel");
-						for (var i = 0; i < radios.length; i++) {
-							if (radios[i].checked) {
-								var Wlevel = radios[i].value;
-								break;
-							}
-						}
-
-						radios = document.getElementsByName("Rlibrary");
-						for (var i = 0; i < radios.length; i++) {
-							if (radios[i].checked) {
-								var Rlibrary = radios[i].value;
-								break;
+						for (const current_setting in global_settings) {
+							const radio_button = document.getElementsByName(current_setting);
+							const I = radio_button.length;
+							for (var i = 0; i < I; ++i) {
+								const val = radio_button[i];
+								if (val.checked) {
+									config_settings.push( val.value );
+									break;
+								}
 							}
 						}
 
 						try {
-							const data = "CLibrary=" + CLibrary + "; Ox=" + Ox + "; Wlevel=" + Wlevel + "; Rlibrary=" + Rlibrary;
+							const data = global_settings.map((e, i) => `${e}=${config_settings[i]};`);
 							fetch("https://www.cppinsider.com/?file=CONFIG&filehandle=", {
 								method: "POST",
 								headers: {
