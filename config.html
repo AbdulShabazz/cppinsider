@@ -83,7 +83,7 @@
 				<h2>MSVC Project Settings </h2>
 				<note>(Note: Changing these settings may effect turnaround time.)</note>
 
-				<h3>Code Base</h3>
+				<h3>Target Code Base</h3>
 				<input type="radio" id="C14" name="CLibrary" value="C14">
 				<label for="C14">/std:C++14</label><br>
 				<input type="radio" id="C17" name="CLibrary" value="C17">
@@ -99,7 +99,7 @@
 				<input type="radio" id="CPY" name="CLibrary" value="CPY">
 				<label for="CPY">/Python (Latest)</label><br>
 				<input type="radio" id="CDOC" name="CLibrary" value="CDOC">
-				<label for="CDOC">/Library (Generate Documentation)</label><br>
+				<label for="CDOC">/Library (Generate Documentation Only)</label><br>
 
 				<h3>Calling Convention</h3>
 				<input type="radio" id="Gd" name="CConvention" value="Gd" checked>
@@ -111,34 +111,22 @@
 				<input type="radio" id="Gv" name="CConvention" value="Gv">
 				<label for="Gv">/Gv (__vectorcall)</label><br>
 
-				<h3>OpenMP Support</h3>
-				<input type="radio" id="openmp_" name="OMPSupport" value="openmp_" checked>
-				<label for="openmp_">/openmp- (No)</label><br>
-				<input type="radio" id="openmp" name="OMPSupport" value="openmp">
-				<label for="openmp">/openmp (Yes)</label><br>
-
-				<h3>Treat Warnings as Errors</h3>
-				<input type="radio" id="WX_" name="WarnAsErr" value="WX_" checked>
-				<label for="WX_">/WX- (No)</label><br>
-				<input type="radio" id="WX" name="WarnAsErr" value="WX">
-				<label for="WX">/WX (Yes)</label><br>
-
 				<h3>Optimization Settings</h3>
-				<input type="radio" id="Od" name="OSettings" value="Od" checked>
+				<input type="radio" id="Od" name="OSettings" value="Od">
 				<label for="Od">/Oz (Default)</label><br>
 				<input type="radio" id="O1" name="OSettings" value="O1">
 				<label for="O1">/O1 (Minimize Size)</label><br>
-				<input type="radio" id="O2" name="OSettings" value="O2">
+				<input type="radio" id="O2" name="OSettings" value="O2" checked>
 				<label for="O2">/O2 (Maximize Speed)</label><br>
-				<input type="radio" id="Ob" name="OSettings" value="Ox">
-				<label for="Ob">/Ob (Inline Function Expansion)</label><br>
+				<input type="radio" id="Ox" name="OSettings" value="Ox">
+				<label for="Ox">/Ox (Inline Function Expansion)</label><br>
 
 				<h3>Warning Level Observance</h3>
-				<input type="radio" id="W0" name="Wlevel" value="W0" checked>
+				<input type="radio" id="W0" name="Wlevel" value="W0">
 				<label for="W0">/W0 (Ignore or Turn Off Warnings)</label><br>
 				<input type="radio" id="W1" name="Wlevel" value="W1">
 				<label for="W1">/W1 (Warning Level 1)</label><br>
-				<input type="radio" id="W2" name="Wlevel" value="W2">
+				<input type="radio" id="W2" name="Wlevel" value="W2" checked>
 				<label for="W2">/W2 (Warning Level 2)</label><br>
 				<input type="radio" id="W3" name="Wlevel" value="W3">
 				<label for="W3">/W3 (Warning Level 3)</label><br>
@@ -162,38 +150,18 @@
 				<label for="x64">/x32 (32-bit)</label><br>
 
 				<h3>Microsoft Foundation Class (MFC) Support</h3>
-				<input type="radio" id="SWL" name="UseMFC" value="SWL" checked>
-				<label for="SWL">/STD (Use Standard Windows Libraries)</label><br>
-				<input type="radio" id="SWL" name="UseMFC" value="MFCS">
-				<label for="MFCS">/MFCS (Use MFC in a Static Library)</label><br>
-				<input type="radio" id="SWL" name="UseMFC" value="MFC">
-				<label for="MFC">/MFC (Use MFC in a Shared DLL)</label><br>
+				<input type="radio" id="STL" name="UseMFC" value="STL" checked>
+				<label for="STL">/STL (Use Standard Windows Libraries)</label><br>
+				<input type="radio" id="MFC" name="UseMFC" value="MFC">
+				<label for="MFC">/MFC (Use MFC in a Static Library)</label><br>
+				<input type="radio" id="MFCDLL" name="UseMFC" value="MFCDLL">
+				<label for="MFCDLL">/MFCDLL (Use MFC in a Shared DLL)</label><br>
 
 				<h3>Character Set</h3>
 				<input type="radio" id="utf8" name="CharSet" value="utf8" checked>
 				<label for="utf8">/UTF8 (Use Unicode Character Set)</label><br>
 				<input type="radio" id="utf8" name="CharSet" value="utf16">
 				<label for="utf16">/UTF16 (Use Multi-byte Character Set)</label><br>
-
-				<h3>Whole Program Optimization Settings</h3>
-				<input type="radio" id="LTO" name="WPO" value="LTO" checked>
-				<label for="LTO">/LTO (Use Link Time Code Generation)</label><br>
-				<input type="radio" id="PGI" name="WPO" value="PGI">
-				<label for="PGI">/PGI (Use Profile Guided Optimization - Instrument)</label><br>
-				<input type="radio" id="PGO" name="WPO" value="PGO">
-				<label for="PGO">/PGO (Use Profile Guided Optimization - Optimize)</label><br>
-				<input type="radio" id="PGU" name="WPO" value="PGU">
-				<label for="PGU">/PGU (Use Profile Guided Optimization - Update)</label><br>
-
-				<h3>Basic Runtime Checks</h3>
-				<input type="radio" id="RTCx" name="BRT" value="RTCx" checked>
-				<label for="RTCx">/RTCx (Default)</label><br>
-				<input type="radio" id="RTCs" name="BRT" value="RTCs">
-				<label for="RTCs">/RTCs (Stack Frames)</label><br>
-				<input type="radio" id="RTCu" name="BRT" value="RTCu">
-				<label for="RTCu">/RTCu (Unitialized Variables)</label><br>
-				<input type="radio" id="RTC1" name="BRT" value="RTC1">
-				<label for="RTC1">/RTC1 (Both /RTCu /RTCs)</label><br>
 
 				<div style="margin-top: 12px;">
 					<button id=submit type="submit" value="Submit"> Submit </button>
@@ -206,16 +174,12 @@
 						const global_settings = 
 						[ "CLibrary"
 						, "CConvention"
-						, "OMPSupport"
-						, "WarnAsErr"
 						, "OSettings"
 						, "Wlevel"
 						, "Rlibrary"
 						, "BuildArch"
 						, "UseMFC"
 						, "CharSet"
-						, "WPO"
-						, "BRT"
 						];
 
 						for (const current_setting in global_settings) {
