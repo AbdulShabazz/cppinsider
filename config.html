@@ -80,7 +80,8 @@
 		<main>
 			<section class="services">
 			<form id="config_form">
-				<h2>MSVC Project Settings</h2>
+				<h2>MSVC Project Settings </h2>
+				<note>(Note: Changing these settings may effect turnaround time.)</note>
 
 				<h3>Code Base</h3>
 				<input type="radio" id="C14" name="CLibrary" value="C14">
@@ -118,9 +119,9 @@
 
 				<h3>Treat Warnings as Errors</h3>
 				<input type="radio" id="WX_" name="WarnAsErr" value="WX_" checked>
-				<label for="WX_">/WX- (No - This setting will (-) reduce turnaround time)</label><br>
+				<label for="WX_">/WX- (No)</label><br>
 				<input type="radio" id="WX" name="WarnAsErr" value="WX">
-				<label for="WX">/WX</label><br>
+				<label for="WX">/WX (Yes)</label><br>
 
 				<h3>Optimization Settings</h3>
 				<input type="radio" id="Od" name="OSettings" value="Od" checked>
@@ -134,7 +135,7 @@
 
 				<h3>Warning Level Observance</h3>
 				<input type="radio" id="W0" name="Wlevel" value="W0" checked>
-				<label for="W0">/W0 (Ignore and or Turn Off Warnings - This setting will (-) reduce turnaround time)</label><br>
+				<label for="W0">/W0 (Ignore or Turn Off Warnings)</label><br>
 				<input type="radio" id="W1" name="Wlevel" value="W1">
 				<label for="W1">/W1 (Warning Level 1)</label><br>
 				<input type="radio" id="W2" name="Wlevel" value="W2">
