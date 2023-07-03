@@ -231,3 +231,37 @@ let server = http.createServer((req, res) => {
     });
 });
 server.listen();
+
+//
+
+				<h3>Treat Warnings as Errors</h3>
+				<input type="radio" id="WX_" name="WarnAsErr" value="WX_" checked>
+				<label for="WX_">/WX- (No)</label><br>
+				<input type="radio" id="WX" name="WarnAsErr" value="WX">
+				<label for="WX">/WX (Yes)</label><br>
+
+				<h3>OpenMP Support</h3>
+				<input type="radio" id="openmp_" name="OMPSupport" value="openmp_" checked>
+				<label for="openmp_">/openmp- (No)</label><br>
+				<input type="radio" id="openmp" name="OMPSupport" value="openmp">
+				<label for="openmp">/openmp (Yes)</label><br>
+
+				<h3>Whole Program Optimization Settings</h3>
+				<input type="radio" id="LTO" name="WPO" value="LTO" checked>
+				<label for="LTO">/LTO (Use Link Time Code Generation)</label><br>
+				<input type="radio" id="PGI" name="WPO" value="PGI">
+				<label for="PGI">/PGI (Use Profile Guided Optimization - Instrument)</label><br>
+				<input type="radio" id="PGO" name="WPO" value="PGO">
+				<label for="PGO">/PGO (Use Profile Guided Optimization - Optimize)</label><br>
+				<input type="radio" id="PGU" name="WPO" value="PGU">
+				<label for="PGU">/PGU (Use Profile Guided Optimization - Update)</label><br>
+
+				<h3>Basic Runtime Checks</h3>
+				<input type="radio" id="RTCx" name="BRT" value="RTCx" checked>
+				<label for="RTCx">/RTCx (Default)</label><br>
+				<input type="radio" id="RTCs" name="BRT" value="RTCs">
+				<label for="RTCs">/RTCs (Stack Frames)</label><br>
+				<input type="radio" id="RTCu" name="BRT" value="RTCu">
+				<label for="RTCu">/RTCu (Unitialized Variables)</label><br>
+				<input type="radio" id="RTC1" name="BRT" value="RTC1">
+				<label for="RTC1">/RTC1 (Both /RTCu /RTCs)</label><br>
